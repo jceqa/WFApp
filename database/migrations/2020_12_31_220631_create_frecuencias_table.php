@@ -15,7 +15,7 @@ class CreateFrecuenciasTable extends Migration
     {
         Schema::create('frecuencias', function (Blueprint $table) {
             $table->id();
-            $table->string('palabra');
+            $table->text('palabra');
             $table->integer('repeticiones');
             $table->integer('id_texto');
             $table->foreign('id_texto')->references('id')->on('textos');

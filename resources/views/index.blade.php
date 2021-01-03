@@ -29,7 +29,7 @@
             <form method="post" action="{{ route('texto.store') }}">
                 <div class="form-group">
                     @csrf
-                    <label for="frase">Texto a Analizar</label>
+                    <label for="frase">Escriba el texto a analizar.</label>
                     <textarea class="form-control" id="frase" rows="4" name="frase"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary">Analizar</button>

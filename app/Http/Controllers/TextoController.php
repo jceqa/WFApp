@@ -50,7 +50,25 @@ class TextoController extends Controller
 
         $texto = Texto::create($validatedData);
 
-        $palabras = preg_split("/[\s,\s.]+/", $texto->frase);
+        $isWeb = strpos($texto, "http");
+
+        if($isWeb) {
+            $url = file_get_contents($texto->frase);
+            if ($url) {
+                $textoWeb = $url;
+                $textoWeb = strip_tags($textoWeb);
+                $textoWeb = str_replace(array('\'', '"'), '', $textoWeb);
+                $palabras = preg_split("/[\s,\s.]+/", $textoWeb);
+                $texto->webpage = $textoWeb;
+                $texto->save();
+            }
+        }
+        else {
+            $palabras = preg_split("/[\s,\s.]+/", $texto->frase);
+        }
+
+
+
 
         $size = count($palabras);
         $pal = "";

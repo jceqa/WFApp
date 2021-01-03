@@ -9,6 +9,6 @@ class Texto extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['frase', 'palabras', 'frecuencias'];
+    protected $fillable = ['frase', 'palabras', 'frecuencias', 'webpage'];
 
 }
